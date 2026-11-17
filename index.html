@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vines Fashion by Shubham Singh Vines | Maharana Pratap Nagar, Arrah</title>
+  <meta name="description" content="Vines Fashion in Maharana Pratap Nagar (Near Sankat Mochan), Arrah—founded by Shubham Singh Vines. Shop Men's Wear, Women's Wear, Casuals, Party & Festive Ethnic Wear. Open Mon–Sun, 9:00 AM – 9:00 PM." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0D0D0D',
+            charcoal: '#171717',
+            surface: '#1F1F1F',
+            gold: { DEFAULT: '#D4AF37', light: '#F3D27A', amber: '#F59E0B' },
+            ivory: '#F9FAFB',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { background-color: #0D0D0D; color: #F9FAFB; }
+    .gold-text {
+      background: linear-gradient(135deg, #F3D27A 0%, #D4AF37 55%, #F59E0B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .admin-overlay { display: none; }
+    body.admin-active .admin-overlay { display: inline-flex; }
+  </style>
+</head>
+<body class="font-sans antialiased selection:bg-gold selection:text-obsidian">
+
+  <!-- Baked State Store (PBKDF2 Auth + Media + Catalog) -->
+  <script id="baked-state" type="application/json">{}</script>
+
+  <!-- Hidden File Pickers -->
+  <input type="file" id="global-media-picker" class="hidden" accept="image/jpeg,image/jpg,image/png,image/*,video/mp4,video/*" onchange="handleSlotFileSelected(event)" />
+  <input type="file" id="restore-enc-picker" class="hidden" accept=".vfenc,.json" onchange="handleEncryptedRestore(event)" />
+
+  <!-- TOP STATUS BAR -->
+  <div class="bg-charcoal border-b border-gold/20 text-xs py-2 px-4 text-center text-ivory/80">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+      <span class="inline-flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span id="live-status" class="font-medium text-emerald-300">Open Daily: 9:00 AM – 9:00 PM</span>
+      </span>
+      <span class="hidden sm:inline text-white/20">|</span>
+      <span>📍 Maharana Pratap Nagar (Near Sankat Mochan), Arrah, Bihar 802301</span>
+      <span class="hidden md:inline text-white/20">|</span>
+      <a href="https://www.instagram.com/vines._fashion/" target="_blank" rel="noopener noreferrer" class="hidden md:inline text-gold hover:underline font-semibold">By Shubham Singh Vines • @vines._fashion →</a>
+    </div>
+  </div>
+
+  <!-- 1. STICKY HEADER -->
+  <header class="sticky top-0 z-40 bg-obsidian/90 backdrop-blur-md border-b border-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="relative w-12 h-12 rounded-full border border-amber-400/60 bg-charcoal overflow-hidden shrink-0">
+          <img data-brand-key="logo" src="vines-logo.jpg" alt="Vines Fashion Logo" class="w-full h-full object-cover" />
+          <svg class="hidden w-full h-full bg-charcoal p-1" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" fill="#141210" stroke="#D4AF37" stroke-width="3"/>
+            <text x="50" y="55" text-anchor="middle" fill="#D4AF37" font-family="Georgia,serif" font-weight="bold" font-size="34">VF</text>
+            <text x="50" y="73" text-anchor="middle" fill="#F9FAFB" font-family="sans-serif" font-size="9" letter-spacing="2">VINES</text>
+          </svg>
+          <button onclick="triggerSlotEdit('brand','logo','image/*')" title="Change Logo" class="admin-overlay absolute inset-0 bg-black/75 text-gold text-xs font-bold items-center justify-center">✏️</button>
+        </div>
+        <a href="#home">
+          <span class="font-serif text-lg sm:text-xl font-bold tracking-[0.12em] block leading-none">VINES FASHION</span>
+          <span class="text-[10px] uppercase tracking-[0.22em] text-gold mt-1 block">Style That Defines You</span>
+        </a>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-ivory/80">
+        <a href="#home" class="hover:text-gold">Home</a>
+        <a href="#catalog" class="hover:text-gold">Catalog &amp; Reels</a>
+        <a href="#founder" class="hover:text-gold">Meet the Founder</a>
+        <a href="#reviews" class="hover:text-gold">Reviews</a>
+        <a href="#visit" class="hover:text-gold">Visit Store</a>
+      </nav>
+
+      <div class="flex items-center gap-2.5">
+        <button id="nav-owner-btn" onclick="handleOwnerButtonClick()" class="inline-flex items-center gap-1.5 bg-charcoal hover:bg-surface text-ivory/85 border border-gold/30 text-xs font-semibold px-3.5 py-2 rounded-full transition-colors">
+          <span>🔐 Owner Login</span>
+        </button>
+        <a href="https://wa.me/918651971607?text=Hi%20Vines%20Fashion%20Arrah!%20I%20would%20like%20to%20book%20a%20store%20visit." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold text-xs px-5 py-2.5 rounded-full">
+          Book a Visit
+        </a>
+        <button id="mobile-btn" aria-label="Menu" class="lg:hidden p-2 rounded-lg text-gold border border-gold/25">☰</button>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="hidden lg:hidden px-4 pb-4 pt-2 border-t border-gold/15 flex flex-col gap-2.5 text-sm">
+      <a href="#home" class="m-link py-1 hover:text-gold">Home</a>
+      <a href="#catalog" class="m-link py-1 hover:text-gold">Catalog &amp; Reels</a>
+      <a href="#founder" class="m-link py-1 hover:text-gold">Meet the Founder</a>
+      <a href="#reviews" class="m-link py-1 hover:text-gold">Customer Reviews</a>
+      <a href="#visit" class="m-link py-1 hover:text-gold">Visit Store</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO BANNER -->
+  <section id="home" class="py-12 lg:py-16 bg-obsidian border-b border-gold/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+        <span class="inline-block bg-charcoal border border-gold/30 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-[0.2em] text-gold">
+          Founded by Shubham Singh Vines • Arrah
+        </span>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+          <span class="gold-text italic">Style That</span> Defines You.
+        </h1>
+        <p class="text-ivory/75 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+          Arrah’s destination in <strong>Maharana Pratap Nagar</strong> for trendy menswear, chic women's silhouettes, daily casuals, festive ethnic outfits, and viral <strong>@vines._fashion</strong> styling reels.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-1">
+          <a href="#catalog" class="bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold px-8 py-3.5 rounded-full text-sm text-center">Explore Collections ↓</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Vines+Fashion+Maharana+Pratap+Nagar+Sankat+Mochan+Arrah+Bihar+802301" target="_blank" rel="noopener noreferrer" class="bg-charcoal border border-gold/40 hover:border-gold text-ivory font-semibold px-7 py-3.5 rounded-full text-sm text-center">📍 Get Directions</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-6 grid grid-cols-12 gap-4 items-end">
+        <div class="col-span-7 relative aspect-[3/4] rounded-3xl overflow-hidden bg-charcoal border border-gold/30">
+          <img data-brand-key="storeFront" src="store-front.jpg" alt="Vines Fashion Storefront Arrah" class="w-full h-full object-cover" />
+          <a href="https://www.instagram.com/vines._fashion/" target="_blank" rel="noopener noreferrer" class="absolute top-3 left-3 bg-obsidian/85 border border-gold/40 px-3 py-1 rounded-full text-xs font-bold text-gold">@vines._fashion</a>
+          <button onclick="triggerSlotEdit('brand','storeFront','image/*')" class="admin-overlay absolute bottom-3 right-3 bg-obsidian/90 hover:bg-gold text-gold hover:text-obsidian border border-gold px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">✏️ Change Media</button>
+        </div>
+
+        <div class="col-span-5 space-y-4">
+          <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-charcoal border border-gold/30">
+            <img data-brand-key="storeInterior" src="store-interior.jpg" alt="Vines Fashion Interior" class="w-full h-full object-cover" />
+            <button onclick="triggerSlotEdit('brand','storeInterior','image/*')" class="admin-overlay absolute bottom-2 right-2 bg-obsidian/90 hover:bg-gold text-gold hover:text-obsidian border border-gold px-2.5 py-1 rounded-full text-[11px] font-bold shadow-lg">✏️ Change Media</button>
+          </div>
+          <div class="bg-charcoal border border-gold/25 rounded-2xl p-4">
+            <p class="text-[10px] uppercase tracking-widest text-gold font-bold">Open All 7 Days</p>
+            <p class="text-sm font-semibold mt-0.5">9:00 AM – 9:00 PM</p>
+            <a href="tel:+918651971607" class="inline-block mt-1.5 text-xs font-semibold text-gold hover:underline">+91 86519 71607 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. DYNAMIC PRODUCT & REEL CATALOG -->
+  <section id="catalog" class="py-16 lg:py-20 bg-charcoal border-b border-gold/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold">Boutique Inventory &amp; Reels</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1.5">Featured Collections &amp; Reels</h2>
+          <p class="text-sm text-ivory/65 mt-1">Filter by category or search outfits. Tap any card to order or inquire via WhatsApp.</p>
+        </div>
+        <button id="catalog-admin-btn" onclick="openAdminDashboard('add')" class="hidden self-start md:self-auto bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold text-xs sm:text-sm px-5 py-3 rounded-full shadow-lg">
+          + Add New Product / Reel
+        </button>
+      </div>
+
+      <div class="bg-obsidian border border-gold/20 rounded-2xl p-4 mb-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div id="filter-bar" class="flex flex-wrap gap-2"></div>
+        <div class="relative w-full lg:w-72 shrink-0">
+          <input type="search" id="catalog-search" oninput="handleSearch(this.value)" placeholder="Search shirts, kurtas, reels..." class="w-full bg-charcoal border border-white/15 focus:border-gold rounded-full pl-10 pr-4 py-2.5 text-sm text-ivory placeholder-ivory/45 focus:outline-none" />
+          <svg class="w-4 h-4 text-gold absolute left-3.5 top-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"/></svg>
+        </div>
+      </div>
+
+      <p id="catalog-count-label" class="text-xs text-ivory/60 mb-5"></p>
+      <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+      <div id="empty-state" class="hidden text-center py-14 bg-obsidian/60 border border-white/10 rounded-3xl">
+        <p class="font-serif text-xl text-gold">No matching items found</p>
+        <button onclick="resetFilters()" class="mt-4 bg-gold text-obsidian font-bold text-xs px-5 py-2.5 rounded-full">Show All Items</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MEET THE FOUNDER / ABOUT SECTION (SHUBHAM SINGH VINES) -->
+  <section id="founder" class="py-16 lg:py-24 bg-obsidian border-b border-gold/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+
+      <!-- Founder Portrait Card (founder-shubham.jpg) -->
+      <div class="lg:col-span-5">
+        <div class="relative rounded-3xl overflow-hidden bg-charcoal border border-gold/35 shadow-2xl aspect-[4/5] group">
+          <img data-brand-key="founder" src="founder-shubham.jpg" alt="Shubham Singh Vines - Founder & Owner of Vines Fashion Arrah" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent p-6">
+            <span class="inline-block bg-gold/20 border border-gold/40 text-gold text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">Founder &amp; Owner</span>
+            <h3 class="font-serif text-2xl font-bold text-ivory mt-1.5">Shubham Singh</h3>
+            <p class="text-xs text-gold font-semibold">Known Online as "Shubham Singh Vines"</p>
+          </div>
+          <button onclick="triggerSlotEdit('brand','founder','image/*')" class="admin-overlay absolute top-3 right-3 bg-obsidian/90 hover:bg-gold text-gold hover:text-obsidian border border-gold px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">✏️ Change Media</button>
+        </div>
+      </div>
+
+      <!-- Founder Story, Milestones & Creator Social Links -->
+      <div class="lg:col-span-7 space-y-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold">Meet The Founder • Masarh to Arrah</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-2 leading-tight">
+            From Viral Desi Comedy to <span class="gold-text italic">Arrah’s Signature</span> Fashion Hub.
+          </h2>
+        </div>
+
+        <p class="text-ivory/80 text-base leading-relaxed">
+          <strong>Shubham Singh</strong>—widely celebrated online as <strong>Shubham Singh Vines</strong>—is a digital creator and entrepreneur rooted in <strong>Masarh, Bhojpur (Arrah, Bihar)</strong>. Speaking Hindi, Bhojpuri, and English, Shubham built a devoted nationwide audience through relatable desi-style comedy skits, Chhath Puja specials, and authentic village-lifestyle storytelling.
+        </p>
+        <p class="text-ivory/75 text-base leading-relaxed">
+          Turning his creative momentum into local impact, Shubham launched <strong>Vines Fashion</strong> in <strong>Maharana Pratap Nagar (Near Sankat Mochan), Arrah</strong>—named directly after his creator moniker—with a clear mission: bringing trendy, metro-quality, and budget-friendly men's and women's fashion right to Bhojpur’s doorstep.
+        </p>
+
+        <!-- Verified Community Milestone Badges -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-1">
+          <div class="bg-charcoal border border-gold/25 rounded-2xl p-4 text-center sm:text-left">
+            <p class="font-serif text-xl sm:text-2xl font-bold text-gold">1.18M+</p>
+            <p class="text-[11px] text-ivory/65 mt-0.5">YouTube Subscribers</p>
+          </div>
+          <div class="bg-charcoal border border-gold/25 rounded-2xl p-4 text-center sm:text-left">
+            <p class="font-serif text-xl sm:text-2xl font-bold text-gold">812K+</p>
+            <p class="text-[11px] text-ivory/65 mt-0.5">Instagram Followers</p>
+          </div>
+          <div class="bg-charcoal border border-gold/25 rounded-2xl p-4 text-center sm:text-left">
+            <p class="font-serif text-xl sm:text-2xl font-bold text-gold">178K+</p>
+            <p class="text-[11px] text-ivory/65 mt-0.5">Facebook Community</p>
+          </div>
+        </div>
+
+        <!-- Direct Creator & Store Social Links -->
+        <div class="flex flex-wrap gap-3 pt-2">
+          <a href="https://www.youtube.com/@Shubhamssrvines" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-red-600/15 hover:bg-red-600 text-red-300 hover:text-white border border-red-500/40 px-4 py-2.5 rounded-full text-xs font-bold transition-colors">
+            <span>▶ YouTube (@Shubhamssrvines)</span>
+          </a>
+          <a href="https://www.instagram.com/shubham_singh_vines/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-charcoal hover:bg-gold text-gold hover:text-obsidian border border-gold/40 px-4 py-2.5 rounded-full text-xs font-bold transition-colors">
+            <span>📸 Creator IG (@shubham_singh_vines)</span>
+          </a>
+          <a href="https://www.instagram.com/vines._fashion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-gradient-to-r from-gold to-gold-amber text-obsidian px-5 py-2.5 rounded-full text-xs font-bold hover:brightness-105 transition-all">
+            <span>🛍️ Store IG (@vines._fashion)</span>
+          </a>
+          <a href="https://www.facebook.com/shubhamsinghvines/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-charcoal hover:bg-surface text-ivory/85 border border-white/15 px-4 py-2.5 rounded-full text-xs font-semibold transition-colors">
+            <span>📘 Facebook</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CUSTOMER REVIEWS -->
+  <section id="reviews" class="py-16 bg-charcoal border-b border-gold/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-5 relative aspect-[4/5] rounded-3xl overflow-hidden bg-obsidian border border-gold/30">
+        <img data-brand-key="customerReview" src="customer-review.jpg" alt="Happy Customer at Vines Fashion Arrah" class="w-full h-full object-cover" />
+        <span class="absolute top-4 left-4 bg-obsidian/85 border border-gold/40 text-gold text-xs font-bold px-3 py-1 rounded-full">★★★★★ Verified Arrah Shopper</span>
+        <button onclick="triggerSlotEdit('brand','customerReview','image/*')" class="admin-overlay absolute bottom-3 right-3 bg-obsidian/90 hover:bg-gold text-gold hover:text-obsidian border border-gold px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">✏️ Change Media</button>
+      </div>
+
+      <div class="lg:col-span-7 space-y-6">
+        <span class="text-xs font-bold uppercase tracking-[0.25em] text-gold">Customer Trust</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold">Loved by Shoppers in Arrah</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-obsidian border border-white/10 rounded-2xl p-5">
+            <p class="text-gold text-sm mb-2">★★★★★</p>
+            <p class="text-sm text-ivory/85 italic">"Awesome showroom vibe in Maharana Pratap Nagar! Great fabrics, clean fitting rooms, and trendy men's outfits at honest prices."</p>
+            <p class="text-xs text-gold font-semibold mt-3">— Verified In-Store Customer</p>
+          </div>
+          <div class="bg-obsidian border border-white/10 rounded-2xl p-5">
+            <p class="text-gold text-sm mb-2">★★★★★</p>
+            <p class="text-sm text-ivory/85 italic">"Saw their styling reel on @vines._fashion and picked up my festive kurta the exact same day near Sankat Mochan."</p>
+            <p class="text-xs text-gold font-semibold mt-3">— Arrah Local Shopper</p>
+          </div>
+        </div>
+        <a href="https://www.instagram.com/vines._fashion/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-obsidian hover:bg-surface border border-gold/40 text-gold text-xs font-bold px-5 py-3 rounded-full">
+          <span>Follow @vines._fashion for Daily Reels →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. VISIT US & GOOGLE MAPS -->
+  <section id="visit" class="py-16 bg-obsidian">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-8 items-stretch">
+      <div class="lg:col-span-5 bg-charcoal border border-gold/25 rounded-3xl p-8 flex flex-col justify-between space-y-6">
+        <div class="space-y-4">
+          <span class="text-xs font-bold uppercase tracking-widest text-gold">Visit Our Store</span>
+          <h2 class="font-serif text-3xl font-bold">Vines Fashion, Arrah</h2>
+          <p class="text-sm text-ivory/80"><strong>📍 Address:</strong> Maharana Pratap Nagar (Near Sankat Mochan), Arrah, Bihar 802301</p>
+          <p class="text-sm text-ivory/80"><strong>📞 Phone / WhatsApp:</strong> <a href="tel:+918651971607" class="text-gold font-bold hover:underline">+91 86519 71607</a></p>
+          <p class="text-sm text-ivory/80"><strong>🕒 Hours:</strong> Monday – Sunday, <span class="text-emerald-400 font-semibold">9:00 AM – 9:00 PM</span></p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="https://www.google.com/maps/search/?api=1&query=Vines+Fashion+Maharana+Pratap+Nagar+Sankat+Mochan+Arrah+Bihar+802301" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold py-3 rounded-full text-sm">Get Directions →</a>
+          <a href="https://wa.me/918651971607" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-surface border border-gold/35 text-ivory font-semibold py-3 rounded-full text-sm">WhatsApp Store</a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 rounded-3xl overflow-hidden border border-gold/25 min-h-[340px] bg-charcoal">
+        <iframe title="Vines Fashion Maharana Pratap Nagar Arrah" class="w-full h-full min-h-[340px] border-0" loading="lazy"
+          src="https://maps.google.com/maps?q=Vines+Fashion,+Maharana+Pratap+Nagar,+Sankat+Mochan,+Arrah,+Bihar+802301&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. LUXURY FOOTER -->
+  <footer class="bg-charcoal border-t border-gold/20 py-10 text-xs text-ivory/65">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="relative w-10 h-10 rounded-full border border-gold/50 overflow-hidden bg-obsidian">
+          <img data-brand-key="logo" src="vines-logo.jpg" alt="VF" class="w-full h-full object-cover" />
+          <div class="hidden absolute inset-0 flex items-center justify-center font-serif font-bold text-gold">VF</div>
+        </div>
+        <span>© <span id="year"></span> Vines Fashion, Arrah • Founded by Shubham Singh Vines</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-5">
+        <a href="https://www.instagram.com/vines._fashion/" target="_blank" rel="noopener noreferrer" class="hover:text-gold">@vines._fashion</a>
+        <a href="https://www.youtube.com/@Shubhamssrvines" target="_blank" rel="noopener noreferrer" class="hover:text-gold">YouTube</a>
+        <a href="https://wa.me/918651971607" target="_blank" rel="noopener noreferrer" class="hover:text-gold">WhatsApp</a>
+        <a href="tel:+918651971607" class="hover:text-gold">+91 86519 71607</a>
+        <button id="footer-owner-btn" onclick="handleOwnerButtonClick()" class="text-gold/80 hover:text-gold font-semibold">🔐 Owner Login</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING ADMIN TOOLBAR -->
+  <div id="admin-fab" class="hidden fixed bottom-5 right-5 z-50">
+    <button onclick="openAdminDashboard('add')" class="bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold px-5 py-3.5 rounded-full shadow-2xl border border-white/20 text-xs sm:text-sm hover:scale-105 transition-transform">
+      ⚙️ Manage Catalog &amp; Security
+    </button>
+  </div>
+
+  <!-- OWNER AUTH MODAL (PBKDF2-SHA256) -->
+  <div id="login-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4" onclick="if(event.target===this) closeLoginModal()">
+    <div class="bg-charcoal border border-gold/40 rounded-3xl max-w-sm w-full p-7 relative shadow-2xl">
+      <button onclick="closeLoginModal()" aria-label="Close" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface text-ivory hover:bg-gold hover:text-obsidian flex items-center justify-center">✕</button>
+
+      <form id="auth-setup-form" onsubmit="submitFirstTimeSetup(event)" class="hidden space-y-3">
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">First-Time Security Setup</span>
+        <h3 class="font-serif text-2xl font-bold">Set Master Password</h3>
+        <p class="text-xs text-ivory/65">Zero hardcoded PINs. Hashed with <strong>PBKDF2-SHA256</strong> (100,000 rounds).</p>
+        <input type="password" id="setup-pass-1" required minlength="4" placeholder="Create Owner PIN / Password (min 4 chars)" class="w-full bg-obsidian border border-white/15 focus:border-gold rounded-xl px-4 py-3 text-sm text-ivory focus:outline-none" />
+        <input type="password" id="setup-pass-2" required minlength="4" placeholder="Confirm PIN / Password" class="w-full bg-obsidian border border-white/15 focus:border-gold rounded-xl px-4 py-3 text-sm text-ivory focus:outline-none" />
+        <p id="setup-error" class="hidden text-xs text-red-400"></p>
+        <button type="submit" class="w-full bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold py-3 rounded-full text-sm">🔐 Encrypt &amp; Activate Admin</button>
+      </form>
+
+      <form id="auth-unlock-form" onsubmit="submitOwnerLogin(event)" class="hidden space-y-3">
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">PBKDF2-SHA256 Protected</span>
+        <h3 class="font-serif text-2xl font-bold">Unlock Admin Mode</h3>
+        <p class="text-xs text-ivory/65">Enter your Master Owner Password to edit photos, founder profile &amp; catalog.</p>
+        <input type="password" id="owner-pin-input" required placeholder="Enter Master Password / PIN" class="w-full bg-obsidian border border-white/15 focus:border-gold rounded-xl px-4 py-3 text-sm text-ivory focus:outline-none" />
+        <p id="login-error" class="hidden text-xs text-red-400"></p>
+        <button id="unlock-submit-btn" type="submit" class="w-full bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold py-3 rounded-full text-sm">Unlock Admin Dashboard</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- OWNER ADMIN DASHBOARD MODAL -->
+  <div id="admin-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 backdrop-blur-sm p-4" onclick="if(event.target===this) closeAdminDashboard()">
+    <div class="bg-charcoal border border-gold/40 rounded-3xl max-w-xl w-full p-6 sm:p-7 relative max-h-[92vh] overflow-y-auto shadow-2xl">
+      <button onclick="closeAdminDashboard()" aria-label="Close" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-surface text-ivory hover:bg-gold hover:text-obsidian flex items-center justify-center">✕</button>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+        <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-emerald-300">Encrypted Admin Session (15m Auto-Lock)</span>
+      </div>
+      <h3 class="font-serif text-2xl font-bold">Manage Catalog &amp; Security</h3>
+
+      <div class="flex flex-wrap gap-2 my-4">
+        <button id="adm-tab-add" onclick="switchAdminTab('add')" class="px-4 py-2 rounded-full text-xs font-bold bg-gold text-obsidian">+ Publish Item</button>
+        <button id="adm-tab-list" onclick="switchAdminTab('list')" class="px-4 py-2 rounded-full text-xs font-bold bg-surface text-ivory/80 border border-white/10">Delete Items</button>
+        <button id="adm-tab-sec" onclick="switchAdminTab('sec')" class="px-4 py-2 rounded-full text-xs font-bold bg-surface text-ivory/80 border border-white/10">🛡️ Security &amp; AES Backup</button>
+      </div>
+
+      <form id="adm-panel-add" onsubmit="publishCatalogItem(event)" class="space-y-3 text-sm">
+        <input type="text" id="adm-title" required placeholder="Item Title (e.g. Royal Silk Kurta)" class="w-full bg-obsidian border border-white/15 rounded-xl px-4 py-2.5 text-ivory focus:outline-none focus:border-gold" />
+        <div class="grid grid-cols-2 gap-3">
+          <select id="adm-category" class="w-full bg-obsidian border border-white/15 rounded-xl px-3 py-2.5 text-ivory focus:outline-none focus:border-gold">
+            <option value="mens">Men's Wear</option>
+            <option value="womens">Women's Wear</option>
+            <option value="casuals">Casuals</option>
+            <option value="festive">Festive Ethnic</option>
+            <option value="reels">Instagram Reel (.mp4)</option>
+          </select>
+          <input type="number" id="adm-price" required min="99" placeholder="Price in ₹ (e.g. 1499)" class="w-full bg-obsidian border border-white/15 rounded-xl px-4 py-2.5 text-ivory focus:outline-none focus:border-gold" />
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <input type="text" id="adm-sizes" value="M • L • XL" placeholder="Sizes" class="w-full bg-obsidian border border-white/15 rounded-xl px-4 py-2.5 text-ivory focus:outline-none focus:border-gold" />
+          <input type="text" id="adm-badge" value="New Drop" placeholder="Badge" class="w-full bg-obsidian border border-white/15 rounded-xl px-4 py-2.5 text-ivory focus:outline-none focus:border-gold" />
+        </div>
+        <label class="block border border-dashed border-gold/45 rounded-xl p-3 cursor-pointer hover:bg-obsidian/50">
+          <span class="block text-xs font-bold text-gold mb-1">Upload Photo (.jpg) or Video Reel (.mp4) *</span>
+          <input type="file" id="adm-file" required accept="image/jpeg,image/jpg,image/png,image/*,video/mp4,video/*" class="text-xs w-full text-ivory/80" />
+        </label>
+        <button type="submit" class="w-full bg-gradient-to-r from-gold to-gold-amber text-obsidian font-bold py-3 rounded-full text-sm">Publish Item</button>
+      </form>
+
+      <div id="adm-panel-list" class="hidden space-y-2.5 max-h-64 overflow-y-auto pr-1"></div>
+
+      <div id="adm-panel-sec" class="hidden space-y-4 text-xs">
+        <div class="bg-obsidian border border-gold/25 rounded-2xl p-4 space-y-2.5">
+          <h4 class="font-bold text-gold uppercase tracking-wider">Encrypted Backup (AES-256-GCM)</h4>
+          <p class="text-ivory/65">Encrypt your entire catalog &amp; media with a passphrase into a <code>.vfenc</code> file.</p>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <button type="button" onclick="exportEncryptedBackup()" class="flex-1 bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-bold py-2.5 px-3 rounded-full transition-colors">🔐 Download .vfenc Backup</button>
+            <button type="button" onclick="document.getElementById('restore-enc-picker').click()" class="flex-1 bg-surface hover:bg-white/10 text-ivory border border-white/20 font-bold py-2.5 px-3 rounded-full transition-colors">📂 Restore .vfenc Backup</button>
+          </div>
+        </div>
+
+        <form onsubmit="changeMasterPassword(event)" class="bg-obsidian border border-white/15 rounded-2xl p-4 space-y-2.5">
+          <h4 class="font-bold text-gold uppercase tracking-wider">Rotate Master Owner Password</h4>
+          <input type="password" id="new-master-pass" required minlength="4" placeholder="Enter New Password / PIN" class="w-full bg-charcoal border border-white/15 rounded-xl px-3 py-2 text-ivory focus:outline-none focus:border-gold" />
+          <button type="submit" class="w-full bg-surface hover:bg-gold hover:text-obsidian border border-gold/30 text-gold font-bold py-2 rounded-full transition-colors">Update &amp; Re-Hash Password</button>
+          <p id="pass-changed-msg" class="hidden text-emerald-400 font-semibold"></p>
+        </form>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-white/10 space-y-2.5">
+        <button onclick="exportUpdatedWebsite()" class="w-full bg-emerald-500 hover:bg-emerald-400 text-obsidian font-bold py-3 rounded-full text-xs sm:text-sm">
+          💾 Export Updated Website (index.html)
+        </button>
+        <div class="flex gap-2">
+          <button onclick="resetToDefaults()" class="flex-1 border border-red-400/40 text-red-300 font-semibold py-2 rounded-full text-xs">Reset Catalog</button>
+          <button onclick="logoutOwner()" class="flex-1 border border-white/20 text-ivory/80 font-semibold py-2 rounded-full text-xs">🔒 Lock &amp; Exit Admin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'vf_admin_state_v4';
+    const LOCK_KEY = 'vf_auth_lock_v1';
+    const SESSION_KEY = 'vf_enc_session';
+    const STORE_WA = '918651971607';
+    const PBKDF2_ITERS = 100000;
+    const IDLE_LIMIT_MS = 15 * 60 * 1000;
+
+    // Centralized Brand Media Config (.jpg)
+    const MEDIA_CONFIG = {
+      logo: 'vines-logo.jpg',
+      founder: 'founder-shubham.jpg',
+      storeFront: 'store-front.jpg',
+      storeInterior: 'store-interior.jpg',
+      customerReview: 'customer-review.jpg'
+    };
+
+    const BRAND_FALLBACKS = {
+      founder: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=800&q=80',
+      storeFront: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80',
+      storeInterior: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80',
+      customerReview: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80'
+    };
+
+    const DEFAULT_STATE = {
+      auth: null,
+      brand: { ...MEDIA_CONFIG },
+      catalog: [
+        { id: 101, title: 'Olive Linen Resort Shirt', category: 'mens', label: "Men's Wear", price: 1199, sizes: 'M • L • XL', badge: 'New Drop', mediaType: 'image', mediaUrl: 'mens-wear.jpg', fallback: 'https://images.unsplash.com/photo-1520975682031-45f11b1edb20?auto=format&fit=crop&w=700&q=80' },
+        { id: 102, title: 'Pro Half-Zip Street Pullover', category: 'mens', label: "Men's Wear", price: 999, sizes: 'M • L • XL', badge: 'Bestseller', mediaType: 'image', mediaUrl: 'store-front.jpg', fallback: 'https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?auto=format&fit=crop&w=700&q=80' },
+        { id: 103, title: 'Ivory Structured Co-Ord Set', category: 'womens', label: "Women's Wear", price: 1599, sizes: 'S • M • L', badge: 'Trending', mediaType: 'image', mediaUrl: 'womens-wear.jpg', fallback: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=80' },
+        { id: 104, title: 'Heavyweight Oversized Street Tee', category: 'casuals', label: 'Casuals', price: 699, sizes: 'S • M • L • XL', badge: 'Daily Wear', mediaType: 'image', mediaUrl: 'casual-wear.jpg', fallback: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80' },
+        { id: 105, title: 'Royal Zari Festive Kurta Set', category: 'festive', label: 'Festive Ethnic', price: 2199, sizes: 'S • M • L • XL', badge: 'Festive Pick', mediaType: 'image', mediaUrl: 'ethnic-wear.jpg', fallback: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=80' },
+        { id: 106, title: 'Showroom Fit Check Styling Reel', category: 'reels', label: 'Instagram Reel', price: 1299, sizes: 'In Store', badge: '🎬 Reel', mediaType: 'video', mediaUrl: 'vines-reel-1.mp4', fallback: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=700&q=80' }
+      ]
+    };
+
+    // ================= WEB CRYPTO HELPERS (PBKDF2 + AES-256-GCM) =================
+    const b64Enc = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+    const b64Dec = str => Uint8Array.from(atob(str), c => c.charCodeAt(0));
+
+    async function deriveKey(password, saltBytes, usage = ['deriveBits']) {
+      const enc = new TextEncoder();
+      const baseKey = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveBits', 'deriveKey']);
+      if (usage.includes('encrypt')) {
+        return crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: saltBytes, iterations: PBKDF2_ITERS, hash: 'SHA-256' },
+          baseKey,
+          { name: 'AES-GCM', length: 256 },
+          false,
+          ['encrypt', 'decrypt']
+        );
+      }
+      const bits = await crypto.subtle.deriveBits(
+        { name: 'PBKDF2', salt: saltBytes, iterations: PBKDF2_ITERS, hash: 'SHA-256' },
+        baseKey,
+        256
+      );
+      return b64Enc(bits);
+    }
+
+    async function createAuthRecord(password) {
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const hash = await deriveKey(password, salt, ['deriveBits']);
+      return { salt: b64Enc(salt), hash, iterations: PBKDF2_ITERS, algo: 'PBKDF2-SHA256' };
+    }
+
+    function constantTimeEqual(a, b) {
+      if (a.length !== b.length) return false;
+      let diff = 0;
+      for (let i = 0; i < a.length; i++) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+      return diff === 0;
+    }
+
+    async function verifyAuthRecord(password, auth) {
+      const computed = await deriveKey(password, b64Dec(auth.salt), ['deriveBits']);
+      return constantTimeEqual(computed, auth.hash);
+    }
+
+    async function aesEncryptJSON(obj, password) {
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const key = await deriveKey(password, salt, ['encrypt']);
+      const data = new TextEncoder().encode(JSON.stringify(obj));
+      const cipher = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, data);
+      return JSON.stringify({ v: 1, cipher: 'AES-256-GCM', kdf: 'PBKDF2-SHA256', salt: b64Enc(salt), iv: b64Enc(iv), payload: b64Enc(cipher) });
+    }
+
+    async function aesDecryptJSON(jsonText, password) {
+      const pkg = JSON.parse(jsonText);
+      const key = await deriveKey(password, b64Dec(pkg.salt), ['encrypt']);
+      const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64Dec(pkg.iv) }, key, b64Dec(pkg.payload));
+      return JSON.parse(new TextDecoder().decode(plain));
+    }
+
+    // ================= STATE & SESSION =================
+    function loadInitialState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          parsed.brand = { ...MEDIA_CONFIG, ...(parsed.brand || {}) };
+          return parsed;
+        }
+        const baked = JSON.parse(document.getElementById('baked-state').textContent || '{}');
+        if (baked && baked.brand && Array.isArray(baked.catalog)) {
+          baked.brand = { ...MEDIA_CONFIG, ...baked.brand };
+          return baked;
+        }
+      } catch {}
+      return JSON.parse(JSON.stringify(DEFAULT_STATE));
+    }
+
+    let appState = loadInitialState();
+    let isAdmin = false;
+    let idleTimer = null;
+    let currentFilter = 'all';
+    let searchQuery = '';
+    let pendingTarget = null;
+
+    function restoreSession() {
+      try {
+        const sess = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+        if (sess && appState.auth && sess.token === appState.auth.hash.slice(0, 16) && Date.now() < sess.exp) {
+          isAdmin = true;
+          bumpIdleTimer();
+        }
+      } catch {}
+    }
+
+    function activateSession() {
+      isAdmin = true;
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ token: appState.auth.hash.slice(0, 16), exp: Date.now() + IDLE_LIMIT_MS }));
+      bumpIdleTimer();
+      syncAdminUI();
+    }
+
+    function bumpIdleTimer() {
+      clearTimeout(idleTimer);
+      if (!isAdmin) return;
+      idleTimer = setTimeout(() => {
+        logoutOwner();
+        alert('Admin Mode auto-locked after 15 minutes of inactivity.');
+      }, IDLE_LIMIT_MS);
+    }
+    ['click', 'keydown'].forEach(ev => document.addEventListener(ev, () => { if (isAdmin) bumpIdleTimer(); }));
+
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(appState)); } catch {}
+      document.getElementById('baked-state').textContent = JSON.stringify(appState);
+    }
+
+    function getLockState() {
+      try { return JSON.parse(localStorage.getItem(LOCK_KEY) || '{"fails":0,"until":0}'); } catch { return { fails: 0, until: 0 }; }
+    }
+
+    function handleOwnerButtonClick() {
+      if (isAdmin) { openAdminDashboard('add'); return; }
+      const hasAuth = Boolean(appState.auth && appState.auth.hash);
+      document.getElementById('auth-setup-form').classList.toggle('hidden', hasAuth);
+      document.getElementById('auth-unlock-form').classList.toggle('hidden', !hasAuth);
+      document.getElementById('setup-error').classList.add('hidden');
+      document.getElementById('login-error').classList.add('hidden');
+      document.getElementById('owner-pin-input').value = '';
+      document.getElementById('login-modal').classList.replace('hidden', 'flex');
+    }
+
+    function closeLoginModal() { document.getElementById('login-modal').classList.replace('flex', 'hidden'); }
+
+    async function submitFirstTimeSetup(e) {
+      e.preventDefault();
+      const p1 = document.getElementById('setup-pass-1').value;
+      const p2 = document.getElementById('setup-pass-2').value;
+      const err = document.getElementById('setup-error');
+      if (p1 !== p2) { err.textContent = 'Passwords do not match.'; err.classList.remove('hidden'); return; }
+      if (!window.crypto || !crypto.subtle) { err.textContent = 'Web Crypto requires HTTPS or localhost.'; err.classList.remove('hidden'); return; }
+      appState.auth = await createAuthRecord(p1);
+      saveState();
+      closeLoginModal();
+      activateSession();
+    }
+
+    async function submitOwnerLogin(e) {
+      e.preventDefault();
+      const err = document.getElementById('login-error');
+      const lock = getLockState();
+      if (Date.now() < lock.until) {
+        const secs = Math.ceil((lock.until - Date.now()) / 1000);
+        err.textContent = `Too many failed attempts. Locked for ${secs}s.`;
+        err.classList.remove('hidden');
+        return;
+      }
+      const pass = document.getElementById('owner-pin-input').value;
+      const ok = await verifyAuthRecord(pass, appState.auth);
+      if (ok) {
+        localStorage.removeItem(LOCK_KEY);
+        closeLoginModal();
+        activateSession();
+      } else {
+        lock.fails += 1;
+        if (lock.fails >= 4) { lock.until = Date.now() + 60000; lock.fails = 0; }
+        localStorage.setItem(LOCK_KEY, JSON.stringify(lock));
+        err.textContent = lock.until > Date.now() ? '4 failed attempts. Locked for 60 seconds.' : `Incorrect password (${4 - lock.fails} attempts left).`;
+        err.classList.remove('hidden');
+      }
+    }
+
+    function logoutOwner() {
+      isAdmin = false;
+      clearTimeout(idleTimer);
+      sessionStorage.removeItem(SESSION_KEY);
+      closeAdminDashboard();
+      syncAdminUI();
+    }
+
+    // ================= MEDIA & CATALOG =================
+    function applyBrandMedia() {
+      document.querySelectorAll('[data-brand-key]').forEach(img => {
+        const key = img.getAttribute('data-brand-key');
+        const src = appState.brand[key];
+        if (!src) return;
+        img.classList.remove('hidden');
+        if (key === 'logo' && img.nextElementSibling && img.nextElementSibling.tagName === 'SVG') img.nextElementSibling.classList.add('hidden');
+        img.onerror = function () {
+          this.onerror = null;
+          if (key === 'logo') { this.classList.add('hidden'); if (this.nextElementSibling) this.nextElementSibling.classList.remove('hidden'); }
+          else if (BRAND_FALLBACKS[key]) this.src = BRAND_FALLBACKS[key];
+        };
+        img.src = src;
+      });
+    }
+
+    function handleVideoFallback(sourceEl, fallbackImg) {
+      const video = sourceEl.closest('video');
+      if (!video || !fallbackImg) return;
+      const wrapper = video.parentElement;
+      video.remove();
+      const img = document.createElement('img');
+      img.src = fallbackImg; img.alt = 'Reel Preview'; img.className = 'w-full h-full object-cover';
+      wrapper.insertBefore(img, wrapper.firstChild);
+    }
+
+    function syncAdminUI() {
+      document.body.classList.toggle('admin-active', isAdmin);
+      document.getElementById('admin-fab').classList.toggle('hidden', !isAdmin);
+      document.getElementById('catalog-admin-btn').classList.toggle('hidden', !isAdmin);
+      const badge = isAdmin
+        ? '<span class="inline-flex items-center gap-1.5 text-emerald-300"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>Admin Mode Active</span>'
+        : '<span>🔐 Owner Login</span>';
+      document.getElementById('nav-owner-btn').innerHTML = badge;
+      document.getElementById('footer-owner-btn').innerHTML = badge;
+      renderCatalog();
+    }
+
+    function triggerSlotEdit(type, keyOrId, accept) {
+      if (!isAdmin) return;
+      pendingTarget = { type, keyOrId };
+      const picker = document.getElementById('global-media-picker');
+      picker.accept = accept; picker.value = ''; picker.click();
+    }
+
+    function processFile(file, callback) {
+      if (file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const img = new Image();
+          img.onload = () => {
+            const max = 900, scale = Math.min(1, max / Math.max(img.width, img.height));
+            const canvas = document.createElement('canvas');
+            canvas.width = Math.round(img.width * scale); canvas.height = Math.round(img.height * scale);
+            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+            callback('image', canvas.toDataURL('image/jpeg', 0.82));
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      } else if (file.type.startsWith('video/')) {
+        if (file.size <= 3.5 * 1024 * 1024) {
+          const reader = new FileReader();
+          reader.onload = ev => callback('video', ev.target.result);
+          reader.readAsDataURL(file);
+        } else callback('video', URL.createObjectURL(file));
+      }
+    }
+
+    function handleSlotFileSelected(e) {
+      const file = e.target.files[0];
+      if (!file || !pendingTarget) return;
+      processFile(file, (mediaType, url) => {
+        if (pendingTarget.type === 'brand') { appState.brand[pendingTarget.keyOrId] = url; applyBrandMedia(); }
+        else { const item = appState.catalog.find(x => x.id === pendingTarget.keyOrId); if (item) { item.mediaType = mediaType; item.mediaUrl = url; renderCatalog(); } }
+        saveState(); pendingTarget = null;
+      });
+    }
+
+    const CATEGORIES = [
+      { key: 'all', name: 'All' }, { key: 'mens', name: "Men's" }, { key: 'womens', name: "Women's" },
+      { key: 'casuals', name: 'Casuals' }, { key: 'festive', name: 'Festive' }, { key: 'reels', name: 'Reels' }
+    ];
+
+    function renderFilterBar() {
+      document.getElementById('filter-bar').innerHTML = CATEGORIES.map(c => {
+        const count = c.key === 'all' ? appState.catalog.length : appState.catalog.filter(i => i.category === c.key).length;
+        const active = currentFilter === c.key;
+        return `<button onclick="setFilter('${c.key}')" class="px-4 py-2 rounded-full text-xs font-bold transition-all ${active ? 'bg-gradient-to-r from-gold to-gold-amber text-obsidian' : 'bg-charcoal text-ivory/80 border border-white/10 hover:border-gold/40'}">${c.name} (${count})</button>`;
+      }).join('');
+    }
+
+    function setFilter(cat) { currentFilter = cat; renderCatalog(); }
+    function handleSearch(val) { searchQuery = val.trim().toLowerCase(); renderCatalog(); }
+    function resetFilters() { currentFilter = 'all'; searchQuery = ''; document.getElementById('catalog-search').value = ''; renderCatalog(); }
+
+    function renderCatalog() {
+      renderFilterBar();
+      const filtered = appState.catalog.filter(item =>
+        (currentFilter === 'all' || item.category === currentFilter) &&
+        (!searchQuery || item.title.toLowerCase().includes(searchQuery) || item.label.toLowerCase().includes(searchQuery))
+      );
+      document.getElementById('catalog-count-label').textContent = `Showing ${filtered.length} of ${appState.catalog.length} items`;
+      const grid = document.getElementById('catalog-grid');
+      const empty = document.getElementById('empty-state');
+      if (!filtered.length) { grid.innerHTML = ''; empty.classList.remove('hidden'); return; }
+      empty.classList.add('hidden');
+
+      grid.innerHTML = filtered.map(item => {
+        const formattedPrice = '₹' + Number(item.price).toLocaleString('en-IN');
+        const waMsg = encodeURIComponent(`Hi Vines Fashion (Maharana Pratap Nagar, Arrah)! I'm interested in "${item.title}" (${formattedPrice}). Please share available sizes.`);
+        const mediaBlock = item.mediaType === 'video'
+          ? `<video controls muted loop playsinline poster="${item.fallback || ''}" class="w-full h-full object-cover bg-black"><source src="${item.mediaUrl}" type="video/mp4" onerror="handleVideoFallback(this,'${item.fallback || ''}')" /></video>`
+          : `<img src="${item.mediaUrl}" onerror="this.onerror=null; if('${item.fallback || ''}') this.src='${item.fallback || ''}';" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />`;
+
+        return `
+          <article class="group bg-obsidian border border-gold/20 rounded-2xl overflow-hidden flex flex-col hover:border-gold/50 transition-all">
+            <div class="relative aspect-[4/5] bg-surface overflow-hidden">
+              ${mediaBlock}
+              <span class="absolute top-3 left-3 bg-obsidian/90 border border-gold/40 text-gold text-[10px] font-bold px-2.5 py-1 rounded-full">${item.badge}</span>
+              <button onclick="triggerSlotEdit('catalog',${item.id},'image/*,video/*')" class="admin-overlay absolute bottom-3 right-3 bg-obsidian/95 hover:bg-gold text-gold hover:text-obsidian border border-gold px-3 py-1.5 rounded-full text-[11px] font-bold shadow-lg">✏️ Change Media</button>
+              <button onclick="deleteCatalogItem(${item.id})" class="admin-overlay absolute top-3 right-3 bg-red-600/90 hover:bg-red-500 text-white px-2.5 py-1 rounded-full text-[11px] font-bold">🗑️</button>
+            </div>
+            <div class="p-4 flex-1 flex flex-col justify-between">
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-widest text-gold">${item.label}</p>
+                <h3 class="font-serif text-lg font-bold text-ivory mt-0.5 leading-snug">${item.title}</h3>
+                <div class="flex items-center justify-between mt-2">
+                  <span class="text-lg font-bold text-gold-light">${formattedPrice}</span>
+                  <span class="text-[11px] text-ivory/55">${item.sizes}</span>
+                </div>
+              </div>
+              <a href="https://wa.me/${STORE_WA}?text=${waMsg}" target="_blank" rel="noopener noreferrer" class="mt-4 block w-full text-center bg-gradient-to-r from-gold to-gold-amber hover:brightness-105 text-obsidian font-bold py-2.5 rounded-full text-xs">Order / Inquire on WhatsApp</a>
+            </div>
+          </article>`;
+      }).join('');
+    }
+
+    function openAdminDashboard(tab = 'add') {
+      if (!isAdmin) return;
+      switchAdminTab(tab); renderAdminList();
+      document.getElementById('admin-modal').classList.replace('hidden', 'flex');
+    }
+    function closeAdminDashboard() { document.getElementById('admin-modal').classList.replace('flex', 'hidden'); }
+
+    function switchAdminTab(tab) {
+      ['add', 'list', 'sec'].forEach(t => {
+        const active = t === tab;
+        document.getElementById('adm-panel-' + t).classList.toggle('hidden', !active);
+        document.getElementById('adm-tab-' + t).className = active
+          ? 'px-4 py-2 rounded-full text-xs font-bold bg-gold text-obsidian'
+          : 'px-4 py-2 rounded-full text-xs font-bold bg-surface text-ivory/80 border border-white/10';
+      });
+    }
+
+    function publishCatalogItem(e) {
+      e.preventDefault();
+      if (!isAdmin) return;
+      const file = document.getElementById('adm-file').files[0];
+      if (!file) return;
+      const cat = document.getElementById('adm-category').value;
+      const labelMap = { mens: "Men's Wear", womens: "Women's Wear", casuals: 'Casuals', festive: 'Festive Ethnic', reels: 'Instagram Reel' };
+      processFile(file, (mediaType, mediaUrl) => {
+        appState.catalog.unshift({
+          id: Date.now(), title: document.getElementById('adm-title').value.trim(), category: cat,
+          label: labelMap[cat] || 'Collection', price: Number(document.getElementById('adm-price').value),
+          sizes: document.getElementById('adm-sizes').value.trim() || 'In Store',
+          badge: document.getElementById('adm-badge').value.trim() || 'New Drop', mediaType, mediaUrl
+        });
+        saveState(); renderCatalog(); renderAdminList(); e.target.reset(); closeAdminDashboard();
+      });
+    }
+
+    function deleteCatalogItem(id) {
+      if (!isAdmin) return;
+      appState.catalog = appState.catalog.filter(item => item.id !== id);
+      saveState(); renderCatalog(); renderAdminList();
+    }
+
+    function renderAdminList() {
+      document.getElementById('adm-panel-list').innerHTML = appState.catalog.map(item => `
+        <div class="flex items-center justify-between gap-3 bg-obsidian border border-white/10 rounded-xl p-3 text-xs">
+          <div class="min-w-0"><p class="font-bold text-ivory truncate">${item.title}</p><p class="text-gold">${item.label} • ₹${Number(item.price).toLocaleString('en-IN')}</p></div>
+          <button onclick="deleteCatalogItem(${item.id})" class="shrink-0 bg-red-600/20 hover:bg-red-600 text-red-300 hover:text-white px-3 py-1.5 rounded-full font-bold">Delete</button>
+        </div>`).join('');
+    }
+
+    async function changeMasterPassword(e) {
+      e.preventDefault();
+      if (!isAdmin) return;
+      const newPass = document.getElementById('new-master-pass').value;
+      appState.auth = await createAuthRecord(newPass);
+      saveState();
+      activateSession();
+      const msg = document.getElementById('pass-changed-msg');
+      msg.textContent = '✓ Password rotated & re-hashed with new random salt.';
+      msg.classList.remove('hidden');
+      e.target.reset();
+    }
+
+    async function exportEncryptedBackup() {
+      if (!isAdmin) return;
+      const passphrase = prompt('Enter encryption passphrase for your .vfenc backup:');
+      if (!passphrase) return;
+      const encrypted = await aesEncryptJSON({ brand: appState.brand, catalog: appState.catalog }, passphrase);
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([encrypted], { type: 'application/json' }));
+      a.download = `vines-fashion-backup-${new Date().toISOString().slice(0,10)}.vfenc`;
+      a.click();
+    }
+
+    function handleEncryptedRestore(e) {
+      const file = e.target.files[0];
+      if (!file || !isAdmin) return;
+      const passphrase = prompt('Enter passphrase to decrypt this .vfenc backup:');
+      if (!passphrase) return;
+      const reader = new FileReader();
+      reader.onload = async ev => {
+        try {
+          const data = await aesDecryptJSON(ev.target.result, passphrase);
+          if (data.brand && Array.isArray(data.catalog)) {
+            appState.brand = data.brand; appState.catalog = data.catalog;
+            saveState(); applyBrandMedia(); renderCatalog(); renderAdminList();
+            alert('✓ Encrypted backup decrypted and restored!');
+          }
+        } catch {
+          alert('❌ Decryption failed: wrong passphrase or corrupted .vfenc file.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetToDefaults() {
+      if (!isAdmin) return;
+      const keptAuth = appState.auth;
+      appState = JSON.parse(JSON.stringify(DEFAULT_STATE));
+      appState.auth = keptAuth;
+      saveState(); applyBrandMedia(); renderCatalog(); renderAdminList();
+    }
+
+    function exportUpdatedWebsite() {
+      if (!isAdmin) return;
+      const clone = document.documentElement.cloneNode(true);
+      clone.querySelector('#baked-state').textContent = JSON.stringify(appState);
+      clone.querySelector('body').classList.remove('admin-active');
+      clone.querySelector('#admin-fab').classList.add('hidden');
+      clone.querySelector('#catalog-admin-btn').classList.add('hidden');
+      clone.querySelector('#admin-modal').classList.replace('flex', 'hidden');
+      clone.querySelector('#nav-owner-btn').innerHTML = '<span>🔐 Owner Login</span>';
+      clone.querySelector('#footer-owner-btn').innerHTML = '<span>🔐 Owner Login</span>';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob(['<!DOCTYPE html>\n' + clone.outerHTML], { type: 'text/html' }));
+      a.download = 'index.html';
+      a.click();
+    }
+
+    document.getElementById('mobile-btn').addEventListener('click', () => document.getElementById('mobile-nav').classList.toggle('hidden'));
+    document.querySelectorAll('.m-link').forEach(l => l.addEventListener('click', () => document.getElementById('mobile-nav').classList.add('hidden')));
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const hr = new Date().getHours();
+      document.getElementById('live-status').textContent = (hr >= 9 && hr < 21) ? 'Open Now: 9:00 AM – 9:00 PM' : 'Opens at 9:00 AM (Mon–Sun)';
+      restoreSession();
+      applyBrandMedia();
+      syncAdminUI();
+    });
+  </script>
+</body>
+</html>
